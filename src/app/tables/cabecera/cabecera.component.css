@@ -1,0 +1,16 @@
+.form-check  {
+  font-size: medium;
+  font-style: normal;
+  font-weight: 400;
+}
+
+table, td {
+  border-color: rgb(3, 3, 27);
+  border-width:0mm;
+  border-radius: 10%;
+  border-style:dotted;
+  width: fit-content;
+}
+
+
+
