@@ -53,9 +53,10 @@ export class CrudService {
       catchError(this.handleError)
     );
   }
-  getLatitude(ini: string, fin:string): Observable<any> {
+  getLatitude(ini: number, fin: number, region: number, csn:boolean,gnss:boolean, rna:boolean): Observable<any> {
     let baseurl = '';
-    baseurl = this.baseurl + '/api/estacion/latitud/' + ini + '/' + fin;
+    baseurl = this.baseurl + '/api/estacion/' + ini + '/' + fin + '/' + region + '/' + csn + '/' + gnss + '/' + rna;
+    console.log(baseurl);
     return this.http.get<any>(baseurl)
     .pipe(
       retry(2),

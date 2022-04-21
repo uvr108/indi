@@ -4,7 +4,7 @@
 <tr>
 <td>
     <div class="row">
-            
+
             <div class="col">
               <input type="text" class="form-control form-control-sm" 
               placeholder="Latitud Inicial" aria-label="First name"
@@ -22,9 +22,7 @@
 <td><select class="form-select form-select-sm" aria-label=".form-select-sm"
     formControlName="region">
     <option value="0" selected>Todas las Regiones</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option *ngFor="let reg of region"  value="{{reg['id']}}">{{reg['nombre']}}</option>
   </select>
 </td>
 <td> 

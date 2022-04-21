@@ -32,9 +32,13 @@ export class EstacionComponent implements OnInit, AfterViewInit {
   stations:any={};
 
   select(newItem: any) { 
-    this.crud.getLatitude(newItem[0].lat_ini, newItem[0].lat_fin).subscribe(data => { 
+
+     console.log('newItem->', newItem);
+    
+    this.crud.getLatitude(newItem[0].lat_ini, newItem[0].lat_fin, newItem[0].region, newItem[0].csn, newItem[0].gnss, newItem[0].rna).subscribe(data => { 
       this.data=data; 
-    });   
+    });
+       
   }
 
   getstations() {
@@ -78,12 +82,14 @@ mostra_sismo(net:string, code:string): void {
   ngOnInit(): void {
   
     
-    this.crud.getData('Estacion').subscribe(data => { 
+    this.crud.getLatitude(-20,-60,0,true,true,true).subscribe(data => { 
       this.data=data;
+      /*
       this.data.forEach((dat:any) => {
         console.log(dat.code);
         this.stations[dat.code] = '';
       });
+      */
     });    
 
   }
