@@ -38,9 +38,6 @@ export class CrudService {
       'Something bad happened; please try again later.');
   };
 
-
-
-
   constructor(private http: HttpClient) { }
 
   getData(table: string, fk: any = null): Observable<any> {

@@ -20,6 +20,7 @@
           <th>Network</th>
           <th>Estado</th>
           <th>Latencia</th>
+          <th>Retraso</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -41,6 +42,7 @@
           <td>{{d.Estado.nombre}}</td>
           <!--td>{{stations[d.code]}}</td-->
           <td>0.00</td>
+          <td>0.00</td>
           <td><button type="button" class="btn btn-success btn-sm"></button></td>
           <td *ngIf="stations[d.code] < '10'"><img src="assets/img/verde.png"></td>
           <td *ngIf="stations[d.code] > '10' && stations[d.code] < 300"><img src="assets/img/amarillo.png"></td>
@@ -60,8 +62,7 @@
   
     <!-- Modal Header -->
     <div class="modal-header">
-      <h5 class="modal-title">{{net}} - {{code}}</h5>
-      <!--h5 class="modal-title">{{imagen}}</h5-->
+      <h5 class="modal-title">{{net}} - {{code}}</h5>    
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     
@@ -78,6 +79,7 @@
   </div>
 </div>
 </div>
+
 
 
 </div>
