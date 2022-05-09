@@ -18,12 +18,12 @@ export class CabeceraComponent implements OnInit {
   constructor(private crud: CrudService) { }
 
   profileForm = new FormGroup({
-    lat_ini: new FormControl(-20.00),
-    lat_fin: new FormControl(-60.00),
+    lat_ini: new FormControl(),
+    lat_fin: new FormControl(),
     region: new FormControl(0),
     csn: new FormControl(true),
     gnss: new FormControl(false),
-    rna: new FormControl(true),
+    rna: new FormControl(false),
   });
 
   ngOnInit(): void {

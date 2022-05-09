@@ -21,15 +21,15 @@
           <th>Network</th>
           <th>Estado</th>
           <th>Latencia</th>
-          <th>Retardo</th>
+          <th>Retraso</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let d of data   |paginate: { itemsPerPage: 20, currentPage: p }">
           <td style="text-align: center;">
-            <span *ngIf="stations[d.codigo] < '10'; else otro"><button  type="button" class="btn btn-outline-primary btn-sm"
-             (click)="mostra_sismo(d.Network.nombre, d.code)"  data-toggle="modal" data-target="#myModal">{{d.codigo}}</button></span>
+            <span *ngIf="endtime[d.codigo] < '10'; else otro"><button  type="button" class="btn btn-outline-primary btn-sm"
+             (click)="mostra_sismo(d.Network.nombre, d.codigo)"  data-toggle="modal" data-target="#myModal">{{d.codigo}}</button></span>
             <ng-template #otro>{{d.codigo}}</ng-template>
           </td>
           <td>{{d.nombre}}</td>
@@ -41,13 +41,11 @@
           <td>{{d.Tipo.nombre}}</td>
           <td>{{d.Network.nombre}}</td>
           <td>{{d.Estado.nombre}}</td>
-          
-          <td>0.00</td>
-          <td>0.00</td>
-          <td><button type="button" class="btn btn-success btn-sm" disabled></button></td>
-          <td *ngIf="stations[d.code] < '10'"><img src="assets/img/verde.png"></td>
-          <td *ngIf="stations[d.code] > '10' && stations[d.code] < 300"><img src="assets/img/amarillo.png"></td>
-          <td *ngIf="stations[d.code] > '300'"><img src="assets/img/rojo.jpg"></td>
+          <td>{{latency[d.codigo] | number}}</td>
+          <td>{{endtime[d.codigo] }}</td>
+          <td *ngIf="endtime[d.codigo] < 10"><button type="button" class="btn btn-success btn-sm" disabled></button></td>
+          <td *ngIf="endtime[d.codigo] > 10 && endtime[d.codigo] < 300"><button type="button" class="btn btn-warning btn-sm" disabled></button></td>
+          <td *ngIf="endtime[d.codigo] > 300"><button type="button" class="btn btn-danger btn-sm" disabled></button></td>
           
         </tr>
       </tbody>
@@ -57,29 +55,29 @@
     </div>
 
 <!-- The Modal -->
-<!--div class="modal fade" id="myModal">
+<div class="modal fade" id="myModal">
 <div class="modal-dialog modal-lg">
-  <div class="modal-content"-->
+  <div class="modal-content">
   
     <!-- Modal Header -->
-    <!--div class="modal-header">
-      <h5 class="modal-title">{{net}} - {{code}}</h5>    
+    <div class="modal-header">
+      <h5 class="modal-title">{{net}} - {{codigo}}</h5>    
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div-->
+    </div>
     
     <!-- Modal body -->
-    <!--div class="modal-body">
+    <div class="modal-body">
       <img src="{{imagen}}" width="600px"> 
-    </div-->
+    </div>
     
     <!-- Modal footer -->
-    <!--div class="modal-footer">
+    <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
     
   </div>
 </div>
-</div-->
+</div>
 
 
 
