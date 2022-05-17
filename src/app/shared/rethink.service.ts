@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class RethinkService {
 
 // Base url
-baseurl = 'http://127.0.0.1:8000';
+baseurl = 'http://10.54.223.19:8000';
 
 // Http Headers
 
@@ -42,7 +42,7 @@ baseurl = 'http://127.0.0.1:8000';
   getData(): Observable<any> {
 
     var baseurl = this.baseurl + '/stations/';
-    // console.log(baseurl);
+    console.log(baseurl);
     return this.http.get<any>(baseurl)
     .pipe(
       retry(2),

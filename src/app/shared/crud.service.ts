@@ -10,7 +10,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class CrudService {
 
   // Base url
-  baseurl = 'http://127.0.0.1:3000';
+  baseurl = 'http://10.54.223.19:3000';
 
  // Http Headers
 
@@ -56,7 +56,7 @@ export class CrudService {
   getLatitude(ini: number, fin: number, region: number, csn:boolean,gnss:boolean, rna:boolean): Observable<any> {
     let baseurl = '';
     baseurl = this.baseurl + '/api/estacion/' + ini + '/' + fin + '/' + region + '/' + csn + '/' + gnss + '/' + rna;
-    // console.log(baseurl);
+    console.log(baseurl);
     return this.http.get<any>(baseurl)
     .pipe(
       retry(2),

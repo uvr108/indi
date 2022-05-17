@@ -22,8 +22,11 @@ export class CabeceraComponent implements OnInit {
     lat_fin: new FormControl(),
     region: new FormControl(0),
     csn: new FormControl(true),
-    gnss: new FormControl(false),
-    rna: new FormControl(false),
+    gnss: new FormControl(true),
+    rna: new FormControl(true),
+    verde: new FormControl(true),
+    amarillo: new FormControl(true),
+    rojo: new FormControl(true)
   });
 
   ngOnInit(): void {

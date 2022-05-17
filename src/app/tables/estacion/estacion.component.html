@@ -6,6 +6,7 @@
     <app-cabecera [titulo]="titulo"  (newItemEvent)="select($event)"></app-cabecera>
   </div>
   
+  <!--p>{{latency | json}}</p-->
      
     <table  style="width: 100%;"  class="table  table-hover table-sm">
       <thead class="thead-dark" >
@@ -27,6 +28,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let d of data   |paginate: { itemsPerPage: 20, currentPage: p }">
+          
           <td style="text-align: center;">
             <span *ngIf="endtime[d.codigo] < '10'; else otro"><button  type="button" class="btn btn-outline-primary btn-sm"
              (click)="mostra_sismo(d.Network.nombre, d.codigo)"  data-toggle="modal" data-target="#myModal">{{d.codigo}}</button></span>
@@ -41,12 +43,12 @@
           <td>{{d.Tipo.nombre}}</td>
           <td>{{d.Network.nombre}}</td>
           <td>{{d.Estado.nombre}}</td>
-          <td>{{latency[d.codigo] | number}}</td>
-          <td>{{endtime[d.codigo] }}</td>
-          <td *ngIf="endtime[d.codigo] < 10"><button type="button" class="btn btn-success btn-sm" disabled></button></td>
-          <td *ngIf="endtime[d.codigo] > 10 && endtime[d.codigo] < 300"><button type="button" class="btn btn-warning btn-sm" disabled></button></td>
-          <td *ngIf="endtime[d.codigo] > 300"><button type="button" class="btn btn-danger btn-sm" disabled></button></td>
-          
+          <td>{{latency[d.codigo]| number }}</td>
+          <td>{{endtime[d.codigo] | number}}</td>
+          <td><span *ngIf="endtime[d.codigo] < 10"><button type="button" class="btn btn-success btn-sm" disabled></button></span>
+                             <span *ngIf="endtime[d.codigo] > 10 && endtime[d.codigo] < 300"><button type="button" class="btn btn-warning btn-sm" disabled></button></span>
+                             <span *ngIf="endtime[d.codigo] > 300"><button type="button" class="btn btn-danger btn-sm" disabled></button></span></td>
+      
         </tr>
       </tbody>
     </table>

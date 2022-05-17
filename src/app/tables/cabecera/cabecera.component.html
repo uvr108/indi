@@ -18,13 +18,14 @@
             </div>
             
     </div>
-   
+</td>   
 <td><select class="form-select form-select-sm" aria-label=".form-select-sm"
     formControlName="region">
     <option value="0" selected>Todas las Regiones</option>
     <option *ngFor="let reg of region"  value="{{reg['id']}}">{{reg['nombre']}}</option>
   </select>
 </td>
+<td>&nbsp;</td>
 <td> 
     &nbsp;
     <div class="form-check form-check-inline">
@@ -40,6 +41,23 @@
     <label class="form-check-label">rna</label>
   </div>
 </td>
+<!--td>
+  <td>&nbsp;</td>
+  <td> 
+      &nbsp;
+      <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" formControlName="verde">
+      <label class="form-check-label form-check-label-sm"><button type="button" class="btn btn-success btn-sm" disabled></button></label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox"  formControlName="amarillo">
+      <label class="form-check-label"><button type="button" class="btn btn-warning btn-sm" disabled></button></label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" formControlName="rojo">
+      <label class="form-check-label"><button type="button" class="btn btn-danger btn-sm" disabled></button></label>
+    </div>
+  </td-->
 <td>
     <button type="submit" class="btn btn-secondary btn-sm">Consultar</button>
 </td>

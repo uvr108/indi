@@ -32,12 +32,12 @@ export class EstacionComponent implements OnInit, AfterViewInit {
   data!:any;
   titulo="Estaciones";
   stations:any={};
-  endtime:any = {}
-  latency:any = {}
+  endtime:any = {};
+  latency:any = {};
 
   select(newItem: any) { 
 
-     //console.log('newItem->', newItem);
+     // console.log('newItem->', newItem);
 
      var lat_ini = newItem[0].lat_ini;
      var lat_fin = newItem[0].lat_fin;
@@ -60,13 +60,32 @@ export class EstacionComponent implements OnInit, AfterViewInit {
 
       /* Estaciones */
       this.data.forEach((dat:any) => {
-        var cod = this.stations[dat.codigo];
+        // console.log('dat->', dat.Tipo.nombre);
+        if (this.stations[dat.codigo]) {
+          if (dat.Tipo.nombre == 'GNSS') {
+
+            this.endtime[dat.codigo] = this.stations[dat.codigo][1];
+          }
+          else {
+            var time = new Date().valueOf();
+            var endtime = time/1000 - this.stations[dat.codigo][1];
+            this.endtime[dat.codigo] = parseFloat(endtime.toFixed(1));
+  
+          }
+          
+          this.latency[dat.codigo] = this.stations[dat.codigo][0];
+
+          // console.log(dat.codigo, this.latency[dat.codigo]);  
+        }
+        /*
         if (cod) {
+          console.log(cod)
           var time = new Date().valueOf();
           var endtime = time/1000 - cod.endtime;
           this.endtime[dat.codigo] = parseFloat(endtime.toFixed(1));
           this.latency[dat.codigo] = cod.latency; 
         }
+        */
         
       });
 
@@ -107,7 +126,7 @@ mostra_sismo(net:string, code:string): void {
 
   ngOnInit(): void {
     
-    this.crud.getLatitude(-20,-60,0,true,false,false).subscribe(data => { 
+    this.crud.getLatitude(-20,-60,0,true,true,true).subscribe(data => { 
       this.data=data;            
     });    
 
