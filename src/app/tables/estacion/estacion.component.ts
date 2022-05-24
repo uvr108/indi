@@ -16,7 +16,9 @@ import { isNull } from '@angular/compiler/src/output/output_ast';
 })
 export class EstacionComponent implements OnInit, AfterViewInit {
 
-  imagen!:string;
+  myip = '10.54.217.44'
+  image!:string;
+  jl!:string;
   net!:string;
   codigo!:string;
   now = 0;
@@ -100,28 +102,22 @@ espera() {
 }
 
 
-mostra_sismo(net:string, code:string): void {
-    // alert([net, code]); 
-    
-    if (net == 'GPS') { 
+mostra_sismo(tipo: string, net:string, code:string): void {
      
-    this.re.getPlot(code).subscribe((dat:any) => {
-       this.imagen = "assets/gps/" + code + "/" + dat.jl  + "/" + dat.image;
-       this.net = net;
-       this.codigo = code;
-     }
-   );
-   } else {
-   
+    this.net = net;
+    this.codigo = code;
+    this.image = "";
 
-    this.re.getGraph(net,code).subscribe((dat:any) => {
-       this.imagen = "assets/img/sismo/" + net + "/" + code + "/" + dat.jl  + "/" + dat.image;
-       this.net = net;
-       this.codigo = code;
-     }
-   );
+    if (net === 'GPS') {      
+        this.re.getPlot(code).subscribe((dat:any) => {
+              this.image = 'http://' + this.myip + '/img/gps/' + this.codigo + '/' + dat.jl + '/' + dat.image;
+        });
+   } else {
+       
+       this.re.getGraph(tipo, net,code).subscribe((dat:any) => {
+           this.image = 'http://' + this.myip + '/img/sismos/' + this.net + '/' + this.codigo + '/' + dat.jl + '/' + dat.image;
+        });
   }
-   
 }
 
   ngOnInit(): void {

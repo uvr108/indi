@@ -10,7 +10,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class CrudService {
 
   // Base url
-  baseurl = 'http://10.54.223.19:3000';
+  baseurl = 'http://10.54.217.44:3000';
 
  // Http Headers
 

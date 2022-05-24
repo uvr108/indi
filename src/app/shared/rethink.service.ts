@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class RethinkService {
 
 // Base url
-baseurl = 'http://10.54.223.19:8000';
+baseurl = 'http://10.54.217.44:8000';
 
 // Http Headers
 
@@ -50,8 +50,9 @@ baseurl = 'http://10.54.223.19:8000';
     );
   }
 
-  getGraph(net:string, stat:string): Observable<any> {
-    var baseurl = 'http://127.0.0.1:8000/image/' + net + '/' + stat;
+  getGraph(tipo:string, net:string, stat:string): Observable<any> {
+    var baseurl = 'http://10.54.217.44:8000/sismo/' + tipo + '/' + net + '/' + stat;
+    console.log(baseurl);
     return this.http.get<any>(baseurl)
     .pipe(
       retry(2),
@@ -61,7 +62,7 @@ baseurl = 'http://10.54.223.19:8000';
   }
 
   getPlot(stat:string): Observable<any> {
-    var baseurl = 'http://127.0.0.1:8000/gps/' + stat;
+    var baseurl = 'http://10.54.217.44:8000/gps/' + stat;
     return this.http.get<any>(baseurl)
     .pipe(
       retry(2),

@@ -30,9 +30,10 @@
         <tr *ngFor="let d of data   |paginate: { itemsPerPage: 20, currentPage: p }">
           
           <td style="text-align: center;">
-            <span *ngIf="endtime[d.codigo] < '10'; else otro"><button  type="button" class="btn btn-outline-primary btn-sm"
-             (click)="mostra_sismo(d.Network.nombre, d.codigo)"  data-toggle="modal" data-target="#myModal">{{d.codigo}}</button></span>
-            <ng-template #otro>{{d.codigo}}</ng-template>
+              <span *ngIf="endtime[d.codigo] < '10'; else otro"><button (click)="mostra_sismo(d.Tipo.nombre, d.Network.nombre, d.codigo)" type="button" class="btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">
+                {{d.codigo}}
+              </button></span>
+              <ng-template #otro>{{d.codigo}}</ng-template>
           </td>
           <td>{{d.nombre}}</td>
           <td>{{d.latitud}}</td>
@@ -58,31 +59,28 @@
 
 <!-- The Modal -->
 <div class="modal fade" id="myModal">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
-  
-    <!-- Modal Header -->
-    <div class="modal-header">
-      <h5 class="modal-title">{{net}} - {{codigo}}</h5>    
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{net}} - {{codigo}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!--{{image | json}}-->        
+        <img src='{{image}}'>;
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+      </div>
+
     </div>
-    
-    <!-- Modal body -->
-    <div class="modal-body">
-      <img src="{{imagen}}" width="600px"> 
-    </div>
-    
-    <!-- Modal footer -->
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-    
   </div>
-</div>
-</div>
-
-
-
 </div>
 
 
